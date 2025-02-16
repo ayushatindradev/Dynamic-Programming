@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    //  1. What is Dynamic Programming (DP)?
+    // Dp is an optimisation technique that solves probles breaking them into smaller overlapping subproblems, solving each once string results to avoiding redundant computation.
+
+    // 2. What are the two key properties of DP?
+
+    // 1.Optimal substructure - The problem can be solved using solution of its subproblem
+    // overlapping subproblem the smae subproblmes are solved multiple timespec
+
+    // 3. What are the two approaches to DP?
+    // 1.Top down (Memoisation)= > uses recursion and store results to avoid reco,putation.
+    // Bottom up (Tabulaton ) uses iterattion to compute results sfficiency.
+
+    // 4. Difference between Recursion and DP?
+    // recursion recomputes results multiple times , while DP stores results to avoid redudant work making it more effient
+    // 5. Difference between Memoization and Tabulation?
+    // Memoisation ->uses resursion higher(stack+dp table)+ solwer(resuirive call).
+    // Tabulation->usess iteration lower(only dp table )+faster(itration)
+    // 6. Example where DP is better than Greedy?
+    // 0/1 knapsach problme problem -> greedy may not give the optimal solution , but do consider all possiblties and finds the best one.
+    // 7. Why is DP better than brute force?
+    // Brute force tries all possible solutions o(2^n)
+    // complexity , while DP stores previus , reducing time complexity offen 0(n^2)or o(n)
+    // 8. What is Kadane’s Algorithm?
+    // Kandane's Algorithm is a DP -based approach to find the maximum sum subarray in o(n) time.
+    // 9. Can all recursive problems be solved using DP?
+    // no m only problme with optimal substruture and overlapping subprobme can be solves using DP.
+    // 10. Common types of DP problems?
+    // Liner Dp - Fibochi,climing staries.
+    // 2d uniques path ,minimum path sum
+    // subsewunce dp
+    // knapsach dp
+    // string dp
+}
