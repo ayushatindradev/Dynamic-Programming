@@ -96,3 +96,479 @@ int main()
     // knapsach dp
     // string dp
 }
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+#include <cmath>
+#include <map>
+#include <set>
+using namespace std;
+// int fibon(int n,vector<int>& dp){
+//     // base case
+//     if(n<=1){
+//         return n;
+//     }
+//     // check if value is already computed
+//     if(dp[n]!=-1){
+//         return dp[n];
+//     }
+//     // compute and store the value
+//     dp[n]=fibon(n-1,dp)+fibon(n-2,dp);
+//     return dp[n];
+
+// }
+int fibonachii(int n,int dp[]){
+    if(n<=1){
+        return n;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=fibonachii(n-1,dp)+fibonachii(n-2,dp);
+}
+// 2. Factorial using DP
+int factorial(int n,int dp[]){
+    if(n==0|| n==1){
+        return 1;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=n*factorial(n-1,dp);
+}
+// 3. Count Ways to Reach N-th Step
+int countways(int n,int dp[]){
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countways(n-1,dp)+countways(n-2,dp);
+}
+// 4. Min Cost Climbing Stairs
+int minCostClimb(vector<int> &cost,int n,int dp[]){
+    if(n<=1){
+        return cost[n];
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=cost[n]+min(minCostClimb(cost,n-1,dp)+minCostClimb(cost,n-2,dp));
+}
+int sumN(int n,int dp[]){
+    if(n==0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=n+sumN(n-1,dp);
+}
+// 6. Count Ways to Cover Distance
+int countWays(int n,int dp[]){
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countWays(n-1,dp)+countWays(n-2,dp)+countWays(n-3,dp);
+}
+int triangleNumber(int n,int dp[]){
+    if(n==0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=n+triangleNumber(n-1,dp);
+}
+
+// 8. Count Ways to Climb Stairs with 3 Steps
+int countWays(int n,int dp[]){
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countWays(n-1,dp)+countWays(n-2,dp)+countWays(n-3,dp);
+
+}
+int findMax(int arr[],int n,int dp[]){
+    if(n==0){
+        return arr[0];
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=max(arr[n],findMax(arr,n-1,dp));
+}
+int countWays(int n,int dp[]){
+    if(n==0){
+        return 1;
+
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countWays(n-1,dp)+countWays(n-2,dp)+countWays(n-3,dp);
+}
+int fibonUsingBottomUp(int n)
+{
+    // first store the valuses of the base case into the vector
+    vector<int> dp(n + 1, -1);
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
+}
+int fibonachiusingspaceOptimization(int n)
+{
+    if (n <= 1)
+    {
+        return n;
+    }
+    int previous1 = 0;
+    int previous2 = 1;
+    int current;
+    for (int i = 2; i <= n; i++)
+    {
+        current = previous1 + previous2;
+        previous2 = previous1;
+        previous1 = current;
+    }
+    return current;
+}
+// 1. Count Ways to Reach N-th Step (Only 1 Step Allowed)
+int countWays(int n){
+    return 1;
+}
+int nthEven(int n){
+    return 2*n;
+}
+// 3. Find the N-th Odd Number Using DP
+int ntthOdd(int n){
+    return 2*(n-1);
+}
+
+// 4. Sum of First N Even Numbers Using DP
+int sumEven(int n){
+    return n*(n+1);
+}
+// 5. Sum of First N Odd Numbers Using DP
+int sumOdd(int n){
+    return n*n;
+
+
+}
+
+// Basic DP Array Problems
+void reuuningSum(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<n;i++){
+        dp[i]=dp[i-1]+arr[i];
+    }
+    cout<<"Running sum :";
+    for(int i=0;i<n;i++){
+        cout<<dp[n]<<" ";
+    }
+}
+// 7. Find the Maximum Element in an Array Using DP
+int findMax(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<n;i++){
+        dp[i]=max(dp[i-1],arr[i]);
+    }
+    return dp[n-1];
+}
+// 8. Find the Minimum Element in an Array Using DP
+
+int findMin(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<n;i++){
+        dp[i]=min(dp[i-1],arr[i]);
+    }
+    return dp[n-1];
+}
+// 9. Check if a Given Sum Can be Formed Using Subset DP (Simple Case: Only Positive Numbers)
+int waysToMakeChnage(int n){
+    return 1;
+}
+int countways(int n,int dp[]){
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countWays(n-1,dp)+countWays(n-2,dp);
+}
+int countWays(int n){
+    return 1;
+}
+int fib(int n){
+    if(n<=1){
+        return n;
+    }
+    int dp[n+1];
+    dp[0]=0,dp[1]=1;
+    for(int i=2;i<=n;i++){
+        dp[i]=dp[i-1]+dp[i-2];
+    }
+    return dp[n];
+}
+int countWays(int n){
+    if(n<=1){
+        return 1;
+    }
+    return countWays(n-1)+countWays(n-2);
+}
+int factorial(int n){
+    int dp[n+1];
+    dp[0]=1;
+    for(int i=1;i<=n;i++){
+        dp[i]=dp[i-1]*i;
+    }
+    return dp[n];
+}
+int sumNatural(int n){
+    return (n*(n+1))/2;
+
+}
+int runningSum(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<=n;i++){
+        dp[i]=dp[i-1]+arr[i];
+    }
+    for(int i=0;i<n;i++){
+        cout<<dp[i]<<" ";
+    }
+}
+int findMax(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<n;i++){
+        dp[i]=max(dp[n-1],arr[i]);
+    }
+    return d[n-1];
+}
+int findMin(int arr[],int n){
+    int dp[n];
+    dp[0]=arr[0];
+    for(int i=1;i<n;i++){
+        dp[i]=min(dp[n-1],arr[i]);
+    }
+    return dp[n-1];
+}
+int sumEven(int n){
+    return n*(n+1);
+}
+int sumOdd(int n){
+    return n*n;
+}
+int countWaysPath(int n,int m){
+    if(n==1|| m==1){
+        return 1;
+    }
+    return countWaysPath(n-1,m)+countWaysPath(n,m-1);
+}
+int waysToMakeChange(int n){
+    return 1;
+}
+int countWays(int n,int dp[]){
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n]!=-1){
+        return dp[n];
+    }
+    return dp[n]=countWays(n-1,dp)+countWays(n-2,dp);
+}
+// 🌟 Basic DP Counting & Sequence Problems
+int fib(int n){
+    return (n<=1) ? n: fib(n-1)+fib(n-2);
+}
+int fact(int n){
+  return(n<=1) ? n:n*fact(n-1);
+}
+int sum(int n){
+    return (n*(n+1)/2);
+}
+int sumEven(int n){
+    return n*(n+1);
+}
+int sumOdd(int n){
+    return n*n;
+}
+// 8️⃣ Count ways to reach N-th step (only 1 step allowed).
+int countWays(int n){
+    if (n <= 1)
+        return n;
+    int dp[n+1];
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i <= n; i++)
+        dp[i] = dp[i-1] + dp[i-2];
+    return dp[n];
+}
+// 9️⃣ Count ways to reach N-th step (1 or 2 steps allowed).
+int countWays(int n){
+    return (n<=1) ? 1:countWays(n-1)+countWays(n-2);
+}
+// 🔟 Find the maximum of two numbers.
+int maxNum(int a,int b){
+    return (a>b)? a:b;
+}
+
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    // int ans1 =fibonUsingBottomUp(n);
+    int ans = fibonachiusingspaceOptimization(n);
+    // using space optimisation
+
+    cout << ans;
+
+    return 0;
+
+    //  1. What is Dynamic Programming (DP)?
+    // Dp is an optimisation technique that solves probles breaking them into smaller overlapping subproblems, solving each once string results to avoiding redundant computation.
+
+    // 2. What are the two key properties of DP?
+
+    // 1.Optimal substructure - The problem can be solved using solution of its subproblem
+    // overlapping subproblem the smae subproblmes are solved multiple timespec
+
+    // 3. What are the two approaches to DP?
+    // 1.Top down (Memoisation)= > uses recursion and store results to avoid reco,putation.
+    // Bottom up (Tabulaton ) uses iterattion to compute results sfficiency.
+
+    // 4. Difference between Recursion and DP?
+    // recursion recomputes results multiple times , while DP stores results to avoid redudant work making it more effient
+    // 5. Difference between Memoization and Tabulation?
+    // Memoisation ->uses resursion higher(stack+dp table)+ solwer(resuirive call).
+    // Tabulation->usess iteration lower(only dp table )+faster(itration)
+    // 6. Example where DP is better than Greedy?
+    // 0/1 knapsach problme problem -> greedy may not give the optimal solution , but do consider all possiblties and finds the best one.
+    // 7. Why is DP better than brute force?
+    // Brute force tries all possible solutions o(2^n)
+    // complexity , while DP stores previus , reducing time complexity offen 0(n^2)or o(n)
+    // 8. What is Kadane’s Algorithm?
+    // Kandane's Algorithm is a DP -based approach to find the maximum sum subarray in o(n) time.
+    // 9. Can all recursive problems be solved using DP?
+    // no m only problme with optimal substruture and overlapping subprobme can be solves using DP.
+    // 10. Common types of DP problems?
+    // Liner Dp - Fibochi,climing staries.
+    // 2d uniques path ,minimum path sum
+    // subsewunce dp
+    // knapsach dp
+    // string d
+    // 1️⃣ What is Dynamic Programming (DP)?
+    // Dp is a technique to solveproblem by breaking theme into smlaler subproblme ans stroung resulys to avoid redundant calculation.
+
+    // 2️⃣ What is the key idea behind DP?
+// Solve overlapping subproblme and store results to optiize time complexity.
+// 3️⃣ What are the two main types of DP approaches?
+// Top down (recursion +memoisation)and bollomup (tabulation).
+// 4️⃣ What is Memoization in DP?
+storing already computed results to avoid recomputation(uses in top down approach).
+5️⃣ What is Tabulation in DP?
+solving subproblem itreatively and string result sin a table
+6️⃣ What is the difference between Recursion and DP?
+Recursion solves subproblem repeatedly , where dp store resulys to optimise performance.
+7️⃣ When should you use DP?
+When a problem has overlapping and optimimal substructre properties
+9️⃣ What is an overlapping subproblem in DP?
+a subproblme that is solved multiple times in a recursion approach.
+🔟 What is an optimal substructure in DP?
+A problem has optimal substrcutre of the solution can be foremes from solution of smaller subproblem.
+1️⃣1️⃣ What is the Fibonacci sequence and how does DP improve its computation?
+The fibonachii 0,1,1,2,3,5,8,  o(2^n) to o(n).
+1️⃣2️⃣ How does DP solve the Climbing Stairs problem?
+dp[n]=dp[n-1]+dp[n-2];
+1️⃣3️⃣ How does DP solve the Coin Change problem?
+Use dp to find the minimum number of coins needed or the number of wys to makes an amoutnt 
+1️⃣4️⃣ How does DP solve the 0/1 Knapsack problem?
+yes
+1️⃣5️⃣ How does DP solve the Longest Common Subsequence (LCS) problem?
+dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+1️⃣6️⃣ How does DP solve the Longest Increasing Subsequence (LIS) problem?
+dp[i]=max(dp[i],dp[j]+1);
+
+2️⃣1️⃣ What is the difference between Memoization and Tabulation?
+Ans: Memoization is top-down (recursion + caching), while Tabulation is bottom-up (iterative DP table).
+2️⃣2️⃣ When should you use Memoization over Tabulation?
+Ans: Use Memoization when a problem is naturally recursive and not all subproblems are needed.
+2️⃣3️⃣ When should you use Tabulation over Memoization?
+Ans: Use Tabulation when all subproblems need to be solved and iterative DP is more efficient.
+2️⃣4️⃣ Why does DP avoid recomputation?
+Ans: Because it stores results of subproblems in an array or table.
+2️⃣5️⃣ Why is DP faster than recursion?
+Ans: Because it eliminates redundant calculations by storing intermediate results.
+2️⃣6️⃣ What is Space Optimization in DP?
+Ans: Reducing DP array size by storing only needed previous values (e.g., O(n) → O(1) space).
+2️⃣7️⃣ Can DP be used for Graph Problems?
+Ans: Yes, DP is used in problems like Shortest Path (Floyd-Warshall), Bellman-Ford, etc.
+2️⃣8️⃣ What is the best data structure to use in DP?
+Ans: Arrays (for 1D DP) and 2D tables (for grid-based DP problems).
+2️⃣9️⃣ What is the Time Complexity of DP Problems?
+Ans: Usually O(n), O(n²), or O(n³) depending on the problem.
+3️⃣0️⃣ How do you know if a problem can be solved using DP?
+Ans: If it has overlapping subproblems and optimal substructure properties.
+3️⃣1️⃣ How does DP solve the Grid Path Problem?
+by string the number of ways to reach each cell using pervouise calculation.
+3️⃣2️⃣ What is the minimum path sum in a grid using DP?
+Use DP to fund the path with smallest sum from top -left and bootom-right.
+3️⃣3️⃣ How does DP solve Edit Distance (String Transformation)?
+use dp to minimum cut needed to divide a string into plendrome
+3️⃣4️⃣ How does DP solve Palindrome Partitioning?
+A technique using bitwise operation and state - bases problem 
+3️⃣5️⃣ What is Bitmask DP?
+A technique using bitwise operation to solves subset and state - based problme efficiencty.
+3️⃣6️⃣ Can DP solve Game Theory Problems?
+yes , dp is used to solving number subset 
+3️⃣7️⃣ What is Digit DP?
+a dp technique used for solving number - based problme with constaisns on __get_up_to_n_digits
+3️⃣8️⃣ What is Tree DP?
+A dp - based appraoch to qucikly ns range quieresu like rmq.
+4️⃣0️⃣ How does DP help in Competitive Programming?
+dp is one of the most powerful techniques to optimise and improve complexity.
+
+
+
+
+
+
+
+}
